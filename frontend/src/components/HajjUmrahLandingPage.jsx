@@ -6,6 +6,11 @@ const HajjUmrahLandingPage = () => {
   const [phone, setPhone] = useState('');
   const [name, setName] = useState('');
   const [message, setMessage] = useState('');
+  const [isMenuVisible, setIsMenuVisible] = useState(false);
+
+  const handleMenuToggle = () => {
+    setIsMenuVisible(!isMenuVisible);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -15,16 +20,24 @@ const HajjUmrahLandingPage = () => {
   return (
     <div className="container">
     
-      <nav className="navbar">
-        <div className="navbar-brand">HAJJ & UMRAH</div>
-        <div className="navbar-links">
-          <a href="#home">HOME</a>
-          <a href="#features">FEATURES</a>
-          <a href="#about">ABOUT US</a>
-          <a href="#contact">CONTACT US</a>
-        </div>
-      </nav>
+    <nav className="navbar">
+      <div className="navbar-brand">Travel Bird</div>
 
+      {/* Hamburger Button */}
+      <div className="navbar-toggle" onClick={handleMenuToggle}>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+
+      {/* Navbar Links */}
+      <div className={`navbar-links ${isMenuVisible ? "visible" : "hidden"}`}>
+        <a href="#home">Home</a>
+        <a href="#all-packages">About us</a>
+        <a href="#my-account">services</a>
+        <a href="#contact-us">Contact Us</a>
+      </div>
+    </nav>
 
       <header className="hero">
         <h1>A TASTE OF SPIRITUALITY</h1>
